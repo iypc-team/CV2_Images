@@ -1,23 +1,12 @@
 
 import cv2
+from cv2 import COLOR_BGR2RGBA
 import numpy as np
 from matplotlib import pyplot as plt
 import glob, os, uuid
 from os.path import *
 from time import sleep
 from BashColors import C
-
-try:
-    from google.colab import drive, files
-    from google.colab.patches import cv2_imshow
-except: pass
-
-try:
-    pass
-    # import tensorflow as tf
-except ModuleNotFoundError as err:
-    print(err)
-    # %pip install tensorflow
 
 class CV2_Utils:
     ''' '''
@@ -91,11 +80,9 @@ class CV2_Utils:
         cwd=os.getcwd()
         os.chdir(self.cv2ImagesPth)
         globList=glob.glob('**', recursive=True)
-        fileCount=0
         for fil in sorted(globList):
             fullPath=abspath(fil)
             if fullPath.endswith('.png'):
-                fileCount+=1
                 print(fullPath)
         os.chdir(cwd)
         
